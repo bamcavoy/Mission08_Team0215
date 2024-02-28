@@ -2,7 +2,103 @@
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+namespace Mission08_Team0215.Views.Home
+@model IEnumerable<YourNamespace.TaskViewModel>
+
+@{
+    ViewBag.Title = "Covey's Time Management Matrix";
+}
+
+<h2>Covey's Time Management Matrix</h2>
+
+<div class="container">
+    @* Quadrant I: Important / Urgent *@
+    <div id="quadrant1" class="quadrant">
+        <h3>Quadrant I: Important / Urgent</h3>
+        <ul>
+            @foreach (var item in Model.Where(x => x.IsImportant && x.IsUrgent && !x.IsCompleted))
+            {
+                <li>
+                    @Html.DisplayFor(modelItem => item.Task) -
+                    @Html.DisplayFor(modelItem => item.DueDate)
+                    <a href="@Url.Action("UpdateTask", "Home", new { id = item.Id })">Update</a> |
+                    <a href="@Url.Action("DeleteTask", "Home", new { id = item.Id })">Delete</a>
+                </li>
+            }
+        </ul>
+    </div>
+
+    @* Quadrant II: Important / Not Urgent *@
+    <div id="quadrant2" class="quadrant">
+        <h3>Quadrant II: Important / Not Urgent</h3>
+        <ul>
+            @foreach (var item in Model.Where(x => x.IsImportant && !x.IsUrgent && !x.IsCompleted))
+            {
+                <li>
+                    @Html.DisplayFor(modelItem => item.Task) -
+                    @Html.DisplayFor(modelItem => item.DueDate)
+                    <a href="@Url.Action("UpdateTask", "Home", new { id = item.Id })">Update</a> |
+                    <a href="@Url.Action("DeleteTask", "Home", new { id = item.Id })">Delete</a>
+                </li>
+            }
+        </ul>
+    </div>
+
+    @* Quadrant III: Not Important / Urgent *@
+    <div id="quadrant3" class="quadrant">
+        <h3>Quadrant III: Not Important / Urgent</h3>
+        <ul>
+            @foreach (var item in Model.Where(x => !x.IsImportant && x.IsUrgent && !x.IsCompleted))
+            {
+                <li>
+                    @Html.DisplayFor(modelItem => item.Task) -
+                    @Html.DisplayFor(modelItem => item.DueDate)
+                    <a href="@Url.Action("UpdateTask", "Home", new { id = item.Id })">Update</a> |
+                    <a href="@Url.Action("DeleteTask", "Home", new { id = item.Id })">Delete</a>
+                </li>
+            }
+        </ul>
+    </div>
+
+    @* Quadrant IV: Not Important / Not Urgent *@
+    <div id="quadrant4" class="quadrant">
+        <h3>Quadrant IV: Not Important / Not Urgent</h3>
+        <ul>
+            @foreach (var item in Model.Where(x => !x.IsImportant && !x.IsUrgent && !x.IsCompleted))
+            {
+                <li>
+                    @Html.DisplayFor(modelItem => item.Task) -
+                    @Html.DisplayFor(modelItem => item.DueDate)
+                    <a href="@Url.Action("UpdateTask", "Home", new { id = item.Id })">Update</a> |
+                    <a href="@Url.Action("DeleteTask", "Home", new { id = item.Id })">Delete</a>
+                </li>
+            }
+        </ul>
+    </div>
 </div>
+
+@* Links to other views *@
+<p>
+    @Html.ActionLink("Add New Task", "CreateTask", "Home", null, new { @class = "add-task-link" })
+    @Html.ActionLink("View Completed Tasks", "CompletedTasks", "Home", null, new { @class = "completed-tasks-link" })
+</p>
+
+<style>
+    .container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+
+    .quadrant {
+        flex-basis: 48%;
+        border: 1px solid #ccc;
+        margin-bottom: 20px;
+        padding: 10px;
+    }
+
+    .add-task-link, .completed-tasks-link {
+        display: inline-block;
+        margin-right: 10px;
+    }
+</style>
