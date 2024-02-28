@@ -8,34 +8,53 @@
 <h1 style="text-align:center">Task Form</h1>
 
 <form method="post">
+    <div class="form-check">
+        <input type="hidden" asp-for="TaskId" />
 
-    <input type="hidden" asp-for="TaskId" />
+        <label asp-for="Task">Task</label>
+        <br />
+        <input asp-for="Task" />
+    </div>
 
-    <label asp-for="Task">Task</label>
     <br />
-    <input asp-for="Task" />
+
+    <div class="form-check">
+        <label asp-for="DueDate">Due Date</label>
+        <br />
+        <input asp-for="DueDate" />
+    </div>
+
     <br />
-    <label asp-for="DueDate">Due Date</label>
+
+    <div class="form-check">
+        <label asp-for="Quadrant">Quadrant</label>
+        <br />
+        <input asp-for="Quadrant" />
+    </div>
+
     <br />
-    <input asp-for="DueDate" />
-    <br />
-    <label asp-for="Quadrant">Quadrant</label>
-    <br />
-    <input asp-for="Quadrant" />
-    <br />
-    <select asp-for="CategoryId">
-        <option value="Select a Category"></option>
-        @foreach (Category c in ViewBag.category)
-        {
-            <option value="@c.CategoryId">@c.CategoryName</option>
-            //uses viewbag here to pass information from controller to views
-        }
-    </select>
+
+    <div class="form-check">
+        <select asp-for="CategoryId">
+            <option value="Select a Category"></option>
+            @foreach (Category c in ViewBag.category)
+            {
+                <option value="@c.CategoryId">@c.CategoryName</option>
+                //uses viewbag here to pass information from controller to views
+            }
+        </select>
+    </div>
+
     <br>
-    <label asp-for="Completed">Completed?</label>
-    <br />
-    <input asp-for="Completed" />
+
+    <div class="form-check">
+        <label asp-for="Completed">Completed?</label>
+        <br />
+        <input asp-for="Completed" />
+    </div>
+
     <br /><br />
-    <button type="submit">Submit</button>
+
+   <button class="btn btn-success" type="submit">Submit</button>
 
 </form>
