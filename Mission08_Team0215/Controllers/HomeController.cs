@@ -30,14 +30,14 @@ namespace Mission08_Team0215.Controllers
         }
 
         [HttpPost]
-        public IActionResult Task(Task t)
+        public IActionResult Task(UserTask userTask)
         {
             if (ModelState.IsValid)
             {
-                _repo.AddUserTask(t);
+                _repo.AddUserTask(userTask);
                 return RedirectToAction("Quadrant");
             }
-            return View(t);
+            return View(userTask);
         }
     }
 }
