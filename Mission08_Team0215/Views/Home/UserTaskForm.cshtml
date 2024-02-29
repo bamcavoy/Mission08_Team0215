@@ -1,8 +1,9 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
-    var categories = ViewBag.Category as List<Mission08_Team0215.Models.Category>;
-}
+﻿@using Mission08_Team0215.Models;
 
+@{
+    ViewData["Title"] = "Home Page";
+    var categories = ViewBag.Category as List<Category>;
+}
 
 @model Mission08_Team0215.Models.UserTask
 

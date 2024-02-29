@@ -1,11 +1,13 @@
-﻿@model IEnumerable<Mission08_Team0215.Models.UserTask>
+﻿@using Mission08_Team0215.Models;
+
+@model IEnumerable<UserTask>
 
 @{
     ViewData["Title"] = "Covey's Time Management Matrix";
 
-    var userTasks = ViewBag.UserTask as List<Mission08_Team0215.Models.UserTask>;
+    var userTasks = ViewBag.UserTask as List<UserTask>;
     // Assuming your Category class has the correct property. Adjust if it's different.
-    var categories = ViewBag.Category as List<Mission08_Team0215.Models.Category>;
+    var categories = ViewBag.Category as List<Category>;
 }
 
 <div class="task-lists">
@@ -29,7 +31,7 @@
         <div id="quadrant@i" class="quadrant">
             <h3>Quadrant @i: @(i == 1 ? "Important / Urgent" : i == 2 ? "Important / Not Urgent" : i == 3 ? "Not Important / Urgent" : "Not Important / Not Urgent")</h3>
             <ul>
-                @foreach (var item in Model.Where(x => x.Quadrant == i && x.Completed != true))
+                @foreach (var item in userTasks.Where(x => x.Quadrant == i && x.Completed != true))
                 {
                     var dueDateString = item.DueDate.HasValue ? item.DueDate.Value.ToString("MM/dd/yyyy") : "No Due Date";
                     <li>
