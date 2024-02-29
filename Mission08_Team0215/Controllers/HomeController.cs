@@ -15,7 +15,7 @@ namespace Mission08_Team0215.Controllers
 
         public IActionResult Quadrant()
         {
-            ViewBag.Task = _repo.UserTasks.ToList();
+            ViewBag.Task = _repo.UserTask.ToList();
 
             return View();
         }
@@ -29,7 +29,7 @@ namespace Mission08_Team0215.Controllers
         [HttpPost]
         public IActionResult Task(Task t)
         {
-            if (ModelSate.IsValid)
+            if (ModelState.IsValid)
             {
                 _repo.AddTask(t);
                 return View(Quadrant);
