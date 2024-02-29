@@ -15,7 +15,7 @@ namespace Mission08_Team0215.Controllers
 
         public IActionResult Quadrant()
         {
-            ViewBag.Task = _repo.UserTask.ToList();
+            ViewBag.Task = _repo.UserTasks.ToList();
 
             return View();
         }
