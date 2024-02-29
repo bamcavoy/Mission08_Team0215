@@ -3,6 +3,7 @@
     public interface IUserTaskRepository
     {
         //template for the template
-        //List<UserTask> UserTasks { get; }
+        List<UserTask> UserTask { get; }
+        List<Category> Category { get; }
     }
 }
