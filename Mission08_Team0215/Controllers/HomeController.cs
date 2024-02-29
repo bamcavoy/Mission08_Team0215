@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.DataProtection.Repositories;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Mission08_Team0215.Models;
 using System.Diagnostics;
 
@@ -15,7 +16,9 @@ namespace Mission08_Team0215.Controllers
 
         public IActionResult Quadrant()
         {
-            ViewBag.Task = _repo.UserTask.ToList();
+            ViewBag.UserTask = _repo.UserTask.ToList();
+
+            ViewBag.Categories = _repo.Categories.ToList();
 
             return View();
         }
@@ -23,7 +26,7 @@ namespace Mission08_Team0215.Controllers
         [HttpGet]
         public IActionResult Task()
         {
-            return View(new Task());
+            return View();
         }
 
         [HttpPost]
@@ -32,10 +35,9 @@ namespace Mission08_Team0215.Controllers
             if (ModelState.IsValid)
             {
                 _repo.AddUserTask(t);
-                return View(Quadrant);
+                return RedirectToAction("Quadrant");
             }
-
-
+            return View(t);
         }
     }
 }
