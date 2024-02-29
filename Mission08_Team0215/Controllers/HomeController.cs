@@ -31,7 +31,7 @@ namespace Mission08_Team0215.Controllers
         {
             if (ModelState.IsValid)
             {
-                _repo.AddTask(t);
+                _repo.AddUserTask(t);
                 return View(Quadrant);
             }
 
