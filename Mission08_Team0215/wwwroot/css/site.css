@@ -1,5 +1,7 @@
 html {
-  font-size: 14px;
+  font-size: 14px;  
+  position: relative;
+  min-height: 100%;
 }
 
 @media (min-width: 768px) {
@@ -12,11 +14,29 @@ html {
   box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
 }
 
-html {
-  position: relative;
-  min-height: 100%;
-}
-
 body {
   margin-bottom: 60px;
+  background-color: #f8f9fa; /* Light gray background */
+}
+
+
+.navbar {
+    background-color: #ffffff; /* White navbar background */
+    border-bottom: 1px solid #dee2e6; /* Gray border bottom */
+}
+
+.navbar-brand {
+    font-weight: bold;
+    color: #343a40; /* Dark gray text color */
+}
+
+.nav-link {
+    color: #343a40 !important; /* Dark gray text color */
+}
+
+footer.footer {
+    background-color: #343a40; /* Dark gray footer background */
+    color: #ffffff; /* White text color */
+    padding: 10px 0; /* Add some padding */
+    text-align: center; /* Center-align text */
 }
