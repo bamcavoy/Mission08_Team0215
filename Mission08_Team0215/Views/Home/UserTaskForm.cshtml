@@ -1,9 +1,11 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
+    var categories = ViewBag.Category as List<Mission08_Team0215.Models.Category>;
 }
 
 
 @model Mission08_Team0215.Models.UserTask
+
 
 <h1 style="text-align:center">Task Form</h1>
 
@@ -37,7 +39,7 @@
     <div class="form-check">
         <select asp-for="CategoryId">
             <option value="Select a Category"></option>
-            @foreach (Category c in ViewBag.Category)
+            @foreach (var c in categories)
             {
                 <option value="@c.CategoryId">@c.CategoryName</option>
                 //uses Viewbag here to pass information from controller to views
