@@ -9,8 +9,9 @@ namespace Mission08_Team0215.Models
         [Key]
         [Required]
         public int TaskId { get; set; }
+        public string? TaskName { get; set; }
         //prevent due date from being before start date?
-        public int? DueDate { get; set; }
+        public DateTime? DueDate { get; set; }
         [Required]
         public int Quadrant { get; set; }
 

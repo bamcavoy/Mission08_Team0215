@@ -6,14 +6,14 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
-var app = builder.Build();
-
-
-builder.Services.AddDbContext<UserTaskQuadrantContext>(options =>
+builder.Services.AddDbContext<UserTaskFormContext>(options =>
 {
     options.UseSqlite(builder.Configuration["ConnectionStrings:UserTaskConnection"]);
 });
 
+builder.Services.AddScoped<IUserTaskRepository, EFUserTaskRepository>();
+
+var app = builder.Build();
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
