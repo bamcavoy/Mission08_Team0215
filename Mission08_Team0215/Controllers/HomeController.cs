@@ -8,8 +8,8 @@ namespace Mission08_Team0215.Controllers
 {
     public class HomeController : Controller
     {
-        private IUserTaskRepository _repo;
-        public HomeController(IUserTaskRepository temp)
+        private EFUserTaskRepository _repo;
+        public HomeController(EFUserTaskRepository temp)
         {
             _repo = temp;
         }
@@ -18,7 +18,7 @@ namespace Mission08_Team0215.Controllers
         {
             ViewBag.UserTask = _repo.UserTask.ToList();
 
-            ViewBag.Categories = _repo.Categories.ToList();
+            ViewBag.Categories = _repo.Category.ToList();
 
             return View();
         }
