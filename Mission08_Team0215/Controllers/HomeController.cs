@@ -18,19 +18,23 @@ namespace Mission08_Team0215.Controllers
         {
             ViewBag.UserTask = _repo.UserTask.ToList();
 
-            ViewBag.Categories = _repo.Category.ToList();
+            ViewBag.Category = _repo.Category.ToList();
 
             return View();
         }
 
         [HttpGet]
-        public IActionResult Task()
+        public IActionResult UserTaskForm()
         {
+            ViewBag.UserTask = _repo.UserTask.ToList();
+
+            ViewBag.Category = _repo.Category.ToList();
+
             return View();
         }
 
         [HttpPost]
-        public IActionResult Task(UserTask userTask)
+        public IActionResult UserTaskForm(UserTask userTask)
         {
             if (ModelState.IsValid)
             {
