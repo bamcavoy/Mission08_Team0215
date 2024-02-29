@@ -8,8 +8,8 @@ namespace Mission08_Team0215.Controllers
 {
     public class HomeController : Controller
     {
-        private EFUserTaskRepository _repo;
-        public HomeController(EFUserTaskRepository temp)
+        private IUserTaskRepository _repo;
+        public HomeController(IUserTaskRepository temp)
         {
             _repo = temp;
         }
