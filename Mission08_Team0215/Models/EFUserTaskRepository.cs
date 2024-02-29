@@ -8,7 +8,9 @@
         {
             _context = temp;
         }
-        //public List<UserTask> UserTasks => _context.UserTasks.ToList();
+        public List<UserTask> UserTask => _context.UserTask.ToList();
+
+        public List<Category> Category => _context.Category.ToList();
         public void AddUserTask(UserTask userTask)
         {
             _context.Add(userTask);
