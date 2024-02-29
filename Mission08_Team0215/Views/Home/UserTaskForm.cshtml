@@ -37,10 +37,10 @@
     <div class="form-check">
         <select asp-for="CategoryId">
             <option value="Select a Category"></option>
-            @foreach (Category c in ViewBag.category)
+            @foreach (Category c in ViewBag.Category)
             {
                 <option value="@c.CategoryId">@c.CategoryName</option>
-                //uses viewbag here to pass information from controller to views
+                //uses Viewbag here to pass information from controller to views
             }
         </select>
     </div>
