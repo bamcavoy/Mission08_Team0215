@@ -5,5 +5,6 @@
         //template for the template
         List<UserTask> UserTask { get; }
         List<Category> Category { get; }
+        public void AddUserTask(UserTask userTask);
     }
 }
