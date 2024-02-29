@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.DataProtection.Repositories;
 using Microsoft.AspNetCore.Mvc;
 using Mission08_Team0215.Models;
 using System.Diagnostics;
@@ -6,14 +7,35 @@ namespace Mission08_Team0215.Controllers
 {
     public class HomeController : Controller
     {
-
-        public HomeController()
+        private IUserTaskRepository _repo;
+        public HomeController(IUserTaskRepository temp)
         {
+            _repo = temp;
         }
 
-        public IActionResult Index()
+        public IActionResult Quadrant()
         {
+            ViewBag.Task = _repo.UserTasks.ToList();
+
             return View();
+        }
+
+        [HttpGet]
+        public IActionResult Task()
+        {
+            return View(new Task());
+        }
+
+        [HttpPost]
+        public IActionResult Task(Task t)
+        {
+            if (ModelSate.IsValid)
+            {
+                _repo.AddTask(t);
+                return View(Quadrant);
+            }
+
+
         }
     }
 }
