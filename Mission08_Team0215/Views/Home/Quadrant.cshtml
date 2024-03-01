@@ -11,12 +11,11 @@
 }
 
 <div class="task-lists">
-    <ul>
+    <ul> 
         @foreach (var userTask in userTasks)
         {
             <li>@userTask.TaskName</li>
         }
-        // Ensure your Category model has a property that you're trying to display
         @foreach (var category in categories)
         {
             <li>@category.CategoryName</li>
