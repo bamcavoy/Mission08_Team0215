@@ -21,11 +21,7 @@ namespace Mission08_Team0215.Controllers
 
             ViewBag.Category = _repo.Category.ToList();
 
-            var userTask = ViewBag.UserTask;
-
-            var category = ViewBag.Category;
-
-            return View(userTask, category);
+            return View();
         }
 
         [HttpGet]
