@@ -50,8 +50,12 @@ namespace Mission08_Team0215.Controllers
             if (ModelState.IsValid)
             {
                 _repo.AddUserTask(userTask);
+                return RedirectToAction("Quadrant");
             }
-            return View(userTask);
+            else
+            {
+                return View(userTask);
+            }
         }
 
 
@@ -73,10 +77,15 @@ namespace Mission08_Team0215.Controllers
         [HttpPost]
         public IActionResult Edit(UserTask UpdatedInfo)
         {
-            _repo.Update(UpdatedInfo);
-            _repo.SaveChanges();
-
-            return RedirectToAction("Quadrant");
+            if (ModelState.IsValid)
+            {
+                _repo.EditUserTask(UpdatedInfo);
+                return RedirectToAction("Quadrant");
+            }
+            else
+            {
+                return View(UpdatedInfo);
+            }
         }
 
     }
