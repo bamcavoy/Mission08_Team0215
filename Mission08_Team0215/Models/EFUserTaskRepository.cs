@@ -17,13 +17,15 @@ public class EFUserTaskRepository : IUserTaskRepository
         _context.SaveChanges();
     }
 
-    void IUserTaskRepository.SaveChanges()
+    public void EditUserTask(UserTask editUserTask)
     {
-        throw new NotImplementedException();
+        _context.Update(editUserTask);
+        _context.SaveChanges();
+    }
+    public void DeleteUserTask(UserTask deleteUserTask)
+    {
+        _context.Remove(deleteUserTask);
+        _context.SaveChanges();
     }
 
-    void IUserTaskRepository.Update(UserTask updatedInfo)
-    {
-        throw new NotImplementedException();
-    }
 } 
