@@ -6,7 +6,9 @@
         List<UserTask> UserTask { get; }
         List<Category> Category { get; }
         public void AddUserTask(UserTask userTask);
-        void SaveChanges();
-        void Update(UserTask updatedInfo);
+        public void EditUserTask(UserTask editUserTask);
+
+        public void DeleteUserTask(UserTask deleteUserTask);
+
     }
 }
