@@ -9,19 +9,19 @@ namespace Mission08_Team0215.Models
         [Key]
         [Required]
         public int TaskId { get; set; }
-        public string? TaskName { get; set; }
+        public string TaskName { get; set; }
         //prevent due date from being before start date?
         public DateTime? DueDate { get; set; }
 
         [Required]
-        [Range(1, 4, ErrorMessage = "The value for quadrant must be 1 and 4")]
+        [Range(1, 4, ErrorMessage = "The value for quadrant must be between 1 and 4")]
         public int Quadrant { get; set; }
 
         //set foreign key relationship
         [ForeignKey("CategoryId")]
         public int? CategoryId { get; set; }
         public Category? Category { get; set; }
-        public bool? Completed { get; set; }
+        public int? Completed { get; set; }
 
     }
 }

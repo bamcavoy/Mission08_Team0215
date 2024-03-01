@@ -1,11 +1,11 @@
 ﻿@using Mission08_Team0215.Models;
 
 @{
-    ViewData["Title"] = "Home Page";
-    var categories = ViewBag.Category as List<Category>;
+    ViewData["Title"] = "Task Form";
 }
 
-@model Mission08_Team0215.Models.UserTask
+@model UserTask
+
 
 
 <h1 style="text-align:center">Task Form</h1>
@@ -32,20 +32,24 @@
     <div class="form-check">
         <label asp-for="Quadrant">Quadrant</label>
         <br />
-        <input asp-for="Quadrant" />
+        <select asp-for="Quadrant">
+            <option value=1>1</option>
+            <option value=2>2</option>
+            <option value=3>3</option>
+            <option value=4>4</option>
+        </select>
     </div>
 
     <br />
 
     <div class="form-check">
-        <label asp-for="Category">Category</label>
+        <label asp-for="CategoryId">Category</label>
         <br />
         <select asp-for="CategoryId">
-            <option value="Select a Category"></option>
-            @foreach (var c in categories)
+            <option value="">-- Select Category --</option>
+            @foreach (Category c in ViewBag.Category)
             {
-                <option value="@c.CategoryId" asp-for="CategoryId">@c.CategoryName</option>
-                //uses Viewbag here to pass information from controller to views
+                <option value="@c.CategoryId">@c.CategoryName</option>
             }
         </select>
     </div>
@@ -55,13 +59,16 @@
     <div class="form-check">
         <label asp-for="Completed">Completed?</label>
         <br />
-        <input asp-for="Completed" />
+        <select asp-for="Completed">
+            <option value=1>Yes</option>
+            <option value=0>No</option>
+        </select>
+    </div>
         
         <br /><br />
 
         <button class="btn btn-success" type="submit">Submit</button>
-    </div>
 
-
+        <div asp-validation-summary="All"></div>
 
 </form>
