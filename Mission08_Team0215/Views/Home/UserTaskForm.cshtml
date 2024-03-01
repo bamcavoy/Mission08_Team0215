@@ -38,6 +38,8 @@
     <br />
 
     <div class="form-check">
+        <label asp-for="Category">Category</label>
+        <br />
         <select asp-for="CategoryId">
             <option value="Select a Category"></option>
             @foreach (var c in categories)
