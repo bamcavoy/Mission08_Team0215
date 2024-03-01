@@ -41,7 +41,7 @@ namespace Mission08_Team0215.Controllers
 
             ViewBag.Category = categories;
 
-            return View();
+            return View(new UserTask());
         }
 
         [HttpPost]
