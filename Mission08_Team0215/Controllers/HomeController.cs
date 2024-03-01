@@ -29,13 +29,7 @@ namespace Mission08_Team0215.Controllers
         {
             ViewBag.UserTask = _repo.UserTask.ToList();
 
-            //ViewBag.Category = _repo.Category.ToList();
-
-            //Trying to fix errors on line 45 of UserTaskForm.cshtml
-
-            var categories = _repo.Category.ToList();
-
-            ViewBag.Category = categories;
+            ViewBag.Category = _repo.Category.ToList();
 
             return View(new UserTask());
         }
@@ -50,7 +44,11 @@ namespace Mission08_Team0215.Controllers
             }
             else
             {
-                return View(userTask);
+                ViewBag.UserTask = _repo.UserTask.ToList();
+
+                ViewBag.Category = _repo.Category.ToList();
+
+                return View();
             }
         }
 
