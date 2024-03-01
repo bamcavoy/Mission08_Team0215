@@ -17,13 +17,13 @@ namespace Mission08_Team0215.Controllers
 
         public IActionResult Quadrant()
         {
-            var userTask = ViewBag.UserTask;
-
-            var category = ViewBag.Category;
-
             ViewBag.UserTask = _repo.UserTask.ToList();
 
             ViewBag.Category = _repo.Category.ToList();
+
+            var userTask = ViewBag.UserTask;
+
+            var category = ViewBag.Category;
 
             return View(userTask, category);
         }
@@ -41,7 +41,7 @@ namespace Mission08_Team0215.Controllers
 
             ViewBag.Category = categories;
 
-            return View();
+            return View(new UserTask());
         }
 
         [HttpPost]
@@ -86,6 +86,22 @@ namespace Mission08_Team0215.Controllers
             {
                 return View(UpdatedInfo);
             }
+        }
+
+        [HttpGet]
+        public IActionResult Delete(int id)
+        {
+            ViewBag.recordToDelete = _repo.UserTask
+                .Single(x => x.TaskId == id);
+
+            return View("ConfirmDelete");
+        }
+
+        [HttpPost]
+        public IActionResult Delete(UserTask record)
+        {
+            _repo.DeleteUserTask(record);
+            return RedirectToAction("Quadrant");
         }
 
     }

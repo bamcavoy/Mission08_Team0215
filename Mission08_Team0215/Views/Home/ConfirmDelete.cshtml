@@ -1,0 +1,19 @@
+﻿@using Mission08_Team0215.Models;
+
+@{
+    ViewData["Title"] = "Confirm Delete";
+    UserTask record = ViewBag.recordToDelete ;
+}
+
+@model Mission08_Team0215.Models.UserTask
+
+<h1>Confirm Task Deletion</h1>
+<br /><br />
+<h4>Are you sure you want to delete @record.TaskName ?</h4>
+
+<form method="post">
+    <input type="hidden" asp-for="TaskId" />
+
+    <a class="btn btn-secondary" asp-controller="Home" asp-action="Quadrant">Cancel</a>
+    <button type="submit" class="btn btn-danger">Delete</button>
+</form>
