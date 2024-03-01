@@ -36,8 +36,8 @@
                     <li>
                         @Html.DisplayFor(modelItem => item.TaskName) -
                         @dueDateString
-                        <a href="@Url.Action("UpdateTask", "Home", new { id = item.TaskId })">Update</a> |
-                        <a href="@Url.Action("DeleteTask", "Home", new { id = item.TaskId })">Delete</a>
+                        <a href="@Url.Action("Edit", "Home", new { id = item.TaskId })">Update</a> |
+                        <a href="@Url.Action("Delete", "Home", new { id = item.TaskId })">Delete</a>
                     </li>
                 }
             </ul>

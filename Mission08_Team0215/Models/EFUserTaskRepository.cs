@@ -17,4 +17,13 @@ public class EFUserTaskRepository : IUserTaskRepository
         _context.SaveChanges();
     }
 
+    void IUserTaskRepository.SaveChanges()
+    {
+        throw new NotImplementedException();
+    }
+
+    void IUserTaskRepository.Update(UserTask updatedInfo)
+    {
+        throw new NotImplementedException();
+    }
 } 
