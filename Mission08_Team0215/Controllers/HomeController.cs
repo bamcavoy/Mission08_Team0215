@@ -86,15 +86,13 @@ namespace Mission08_Team0215.Controllers
         public IActionResult Delete(int id)
         {
             ViewBag.recordToDelete = _repo.UserTask
-                .Single(x => x.TaskId == id);
-
+                .SingleOrDefault(x => x.TaskId == id);
             return View("ConfirmDelete");
         }
-
         [HttpPost]
-        public IActionResult Delete(UserTask record)
+        public IActionResult DeleteConfirmed(int id)
         {
-            _repo.DeleteUserTask(record);
+            _repo.DeleteUserTask(id);
             return RedirectToAction("Quadrant");
         }
 

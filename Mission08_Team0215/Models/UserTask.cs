@@ -14,7 +14,6 @@ namespace Mission08_Team0215.Models
         public DateTime? DueDate { get; set; }
 
         [Required]
-        [Range(1, 4, ErrorMessage = "The value for quadrant must be between 1 and 4")]
         public int Quadrant { get; set; }
 
         //set foreign key relationship
