@@ -7,8 +7,6 @@
         List<Category> Category { get; }
         public void AddUserTask(UserTask userTask);
         public void EditUserTask(UserTask editUserTask);
-
-        public void DeleteUserTask(UserTask deleteUserTask);
-
+        void DeleteUserTask(int taskId);
     }
 }
