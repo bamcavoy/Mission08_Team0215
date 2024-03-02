@@ -48,7 +48,7 @@ namespace Mission08_Team0215.Controllers
 
                 ViewBag.Category = _repo.Category.ToList();
 
-                return View();
+                return View(userTask);
             }
         }
 
@@ -78,7 +78,11 @@ namespace Mission08_Team0215.Controllers
             }
             else
             {
-                return View(UpdatedInfo);
+                ViewBag.UserTask = _repo.UserTask.ToList();
+
+                ViewBag.Category = _repo.Category.ToList();
+
+                return View("UserTaskForm", UpdatedInfo);
             }
         }
 
